@@ -36,9 +36,12 @@ public class CapturaRecursosWeb {
             try {
                 URL url = new URL(stringURL);
                 URLConnection connection = url.openConnection();
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+                connection.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                connection.setRequestProperty("Accept-Language", "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7");
                 BufferedReader in = new BufferedReader(
                         new InputStreamReader(
-                        connection.getInputStream()));
+                        connection.getInputStream(), "UTF-8"));
 
                 String inputLine;
 
@@ -48,8 +51,10 @@ public class CapturaRecursosWeb {
                 resultado.add(resposta);
                 in.close();
             } catch (MalformedURLException ex) {
+                resultado.add("");
                 ex.printStackTrace();
             } catch (IOException ex) {
+                resultado.add("");
                 ex.printStackTrace();
             }
         }
