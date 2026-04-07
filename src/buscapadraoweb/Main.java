@@ -55,18 +55,18 @@ public class Main {
         alfabeto[12] = ' ';
         alfabeto[13] = '-';
 
-        String[] estados = new String[21];
-        for (int i = 0; i <= 20; i++){
+        String[] estados = new String[16];
+        for (int i = 0; i <= 15; i++){
             estados[i] = "q" + i;
         }
 
         String estado_inicial = "q0";
 
         String[] estados_finais = new String[1];
-        estados_finais[0] = "q20";
+        estados_finais[0] = "q15";
 
-        int[][] matriz = new int[21][14];
-        for (int i = 0; i < 21; i++)
+        int[][] matriz = new int[16][14];
+        for (int i = 0; i < 16; i++)
             for (int j = 0; j < 14; j++)
                 matriz[i][j] = -1;
 
@@ -84,22 +84,22 @@ public class Main {
 
         for (char c = '0'; c <= '8'; c++)
             matriz[get_string_ref(estados, "q5")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q6");
-        matriz[get_string_ref(estados, "q5")][get_char_ref(alfabeto, '9')] = get_string_ref(estados, "q10");
+        matriz[get_string_ref(estados, "q5")][get_char_ref(alfabeto, '9')] = get_string_ref(estados, "q7");
+
+        matriz[get_string_ref(estados, "q7")][get_char_ref(alfabeto, ' ')] = get_string_ref(estados, "q7");
+        for (char c = '0'; c <= '9'; c++)
+            matriz[get_string_ref(estados, "q7")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q6");
 
         for (char c = '0'; c <= '9'; c++)
-            matriz[get_string_ref(estados, "q6")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q7");
-
-        for (char c = '0'; c <= '9'; c++)
-            matriz[get_string_ref(estados, "q7")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q8");
+            matriz[get_string_ref(estados, "q6")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q8");
 
         for (char c = '0'; c <= '9'; c++)
             matriz[get_string_ref(estados, "q8")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q9");
 
-        matriz[get_string_ref(estados, "q9")][get_char_ref(alfabeto, '-')] = get_string_ref(estados, "q16");
-
-        matriz[get_string_ref(estados, "q10")][get_char_ref(alfabeto, ' ')] = get_string_ref(estados, "q11");
         for (char c = '0'; c <= '9'; c++)
-            matriz[get_string_ref(estados, "q10")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q12");
+            matriz[get_string_ref(estados, "q9")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q10");
+
+        matriz[get_string_ref(estados, "q10")][get_char_ref(alfabeto, '-')] = get_string_ref(estados, "q11");
 
         for (char c = '0'; c <= '9'; c++)
             matriz[get_string_ref(estados, "q11")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q12");
@@ -112,20 +112,6 @@ public class Main {
 
         for (char c = '0'; c <= '9'; c++)
             matriz[get_string_ref(estados, "q14")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q15");
-
-        matriz[get_string_ref(estados, "q15")][get_char_ref(alfabeto, '-')] = get_string_ref(estados, "q16");
-
-        for (char c = '0'; c <= '9'; c++)
-            matriz[get_string_ref(estados, "q16")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q17");
-
-        for (char c = '0'; c <= '9'; c++)
-            matriz[get_string_ref(estados, "q17")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q18");
-
-        for (char c = '0'; c <= '9'; c++)
-            matriz[get_string_ref(estados, "q18")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q19");
-
-        for (char c = '0'; c <= '9'; c++)
-            matriz[get_string_ref(estados, "q19")][get_char_ref(alfabeto, c)] = get_string_ref(estados, "q20");
 
         for (int p = 0; p < listaCodigos.size(); p++){
             String codigoHTML = listaCodigos.get(p);
